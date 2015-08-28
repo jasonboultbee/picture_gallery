@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Picture Gallery </title>
+
+<style type="text/css">
+	body
+	{
+		background-color : #0000ff ;
+	}
+		
+	#pictureFrame
+	{
+		position : relative ;
+		top : 50%;
+		left : 400 px ;
+		height : 400px;
+		width : 400px;
+		border-style : solid;
+		border-color :black ;
+		border-width : 5px;
+	}
+	
+	#container 
+	{
+		border-type : solid ;
+		border-color : black ;
+		border-width : 2px;
+		height : 600 px ;
+		width : 400 px ;
+	}
+</style>
+
+<script type="text/javascript">
+
+function populateFileArray()
+{
+	var names=["pictures/pic1.jpg","pictures/pic2.jpg","pictures/pic3.jpg"];
+	return names;
+}
+
+function nextPicture()
+{
+var srcId = document.getElementById("picture");
+
+// Check if at the end of the fileNames array, then roll back to start
+	if (pictureCounter == fileNames.length)
+		{
+			pictureCounter=0;
+		}	
+		
+//Generate new fileName 		
+	var newSrc=fileNames[pictureCounter];
+
+//Change the src to new picture
+	srcId.src=newSrc;
+//Increment pictureCounter for next roll
+	pictureCounter++;
+
+
+
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+<div id="pictureFrame">
+<img id="picture" src="pictures/pic1.jpg" width=400 height=400 >
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+var fileNames=[];
+var pictureCounter=0;
+
+// Populate dynamic array of filenames, done this way to allow for later expansion)
+	fileNames=populateFileArray();
+
+//Change the image every 3 seconds
+	setInterval(nextPicture, 3000);
+	
+		
+	
+
+</script>
+
+
+</body>
+
+</html>
